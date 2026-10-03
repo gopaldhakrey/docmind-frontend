@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ArrowRight, FileText } from "lucide-react";
@@ -25,8 +26,43 @@ export default function Login() {
         <h1>Welcome back.</h1>
         <p className="auth-copy">Search your documents, ask questions, and find the exact context you need.</p>
         <form onSubmit={submit}>
-          <label>Username or email<input value={identifier} onChange={e=>setIdentifier(e.target.value)} required /></label>
-          <label>Password<input type="password" value={password} onChange={e=>setPassword(e.target.value)} required /></label>
+          <label>Username<input value={identifier} onChange={e=>setIdentifier(e.target.value)} required /></label>
+          <div>
+            <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+            >
+              <label style={{ flex: 1 }}>
+                Password
+                <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                />
+              </label>
+
+              <Link
+                  to="/forgot-password"
+                  style={{
+                    fontSize: "11px",
+                    color: "var(--olive)",
+                    fontWeight: 600,
+                    marginLeft: "10px",
+                    marginTop: "22px",
+                    whiteSpace: "nowrap",
+                  }}
+              >
+                Forgot password?
+              </Link>
+            </div>
+          </div>
+          <div className="forgot-password">
+            <Link to="/forgot-password">Forgot password?</Link>
+          </div>
           {error && <div className="error-text">{error}</div>}
           <button className="button primary full" disabled={loading}>{loading ? "Signing in…" : <>Sign in <ArrowRight size={17}/></>}</button>
         </form>
