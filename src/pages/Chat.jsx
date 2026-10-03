@@ -51,7 +51,7 @@ export default function Chat() {
 
       const { data } = await getConversations();
 
-      setConversations(Array.isArray(data) ? data : []);
+      setConversations(data?.data ?? data ?? []);
     } catch (error) {
       console.error("Failed to load conversations:", error);
     } finally {
