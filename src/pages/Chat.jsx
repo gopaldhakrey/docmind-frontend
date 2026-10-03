@@ -24,7 +24,7 @@ export default function Chat() {
   async function send() {
     const q=question.trim(); if(!q||busy)return;
     setQuestion(""); setMessages(m=>[...m,{role:"user",content:q}]); setBusy(true);
-    const payload={question:q,documentId:selected||null,topK:5,minSimilarity:0.65,conversationId:conversationId||null};
+    const payload={question:q,documentId:selected||null,topK:5,minSimilarity:0.0,conversationId:conversationId||null};
     if(streaming){
       const id=crypto.randomUUID();
       setMessages(m=>[...m,{id,role:"assistant",content:"",citations:[]}]);
