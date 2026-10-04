@@ -4,7 +4,7 @@ import { similaritySearch } from "../api/chatApi";
 
 export default function Search() {
   const [query,setQuery]=useState(""); const [topK,setTopK]=useState(5); const [results,setResults]=useState(null); const [busy,setBusy]=useState(false); const [error,setError]=useState("");
-  async function run(e){e?.preventDefault();if(!query.trim())return;setBusy(true);setError("");try{const {data}=await similaritySearch({query:query.trim(),topK:Number(topK),similaritySearch:true});setResults(data?.data??data)}catch(err){setError(err.response?.data?.message||"Search failed.")}finally{setBusy(false)}}
+  async function run(e){e?.preventDefault();if(!query.trim())return;setBusy(true);setError("");try{const {data}=await similaritySearch({query:query.trim(),topK:Number(topK),similaritySearch:0.3});setResults(data?.data??data)}catch(err){setError(err.response?.data?.message||"Search failed.")}finally{setBusy(false)}}
   return <>
     <div className="page-head"><div><p className="eyebrow">RETRIEVAL</p><h1>Semantic search</h1><p>Inspect the passages the RAG layer can retrieve from your library.</p></div></div>
     <form className="search-form" onSubmit={run}><SearchIcon size={19}/><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Search for a concept, phrase, or fact…"/><select value={topK} onChange={e=>setTopK(e.target.value)}><option value="3">Top 3</option><option value="5">Top 5</option><option value="10">Top 10</option></select><button className="button primary" disabled={busy}>{busy?"Searching…":"Search"}</button></form>
