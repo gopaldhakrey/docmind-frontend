@@ -170,3 +170,37 @@ a{color:inherit;text-decoration:none}.app{min-height:100vh;display:flex}.sidebar
   opacity: 0.75 !important;
 }
 
+
+.profile-avatar-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+}
+
+.profile-photo-button{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  border:1px solid var(--line);
+  background:var(--white);
+  color:#5f6259;
+  border-radius:7px;
+  padding:7px 10px;
+  font-size:10px;
+  font-weight:600;
+  cursor:pointer;
+  transition:all .2s ease;
+}
+
+.profile-photo-button:hover{
+  background:var(--olive2);
+  color:#3f4438;
+  border-color:#c9cbbf;
+}
+
+.profile-photo-button:active{
+  transform:scale(.98);
+}
+
